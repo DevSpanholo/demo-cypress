@@ -6,7 +6,7 @@ describe('Teste End-to-End', () => {
     it('Teste 2: Verifica item na página', () => {
         // Verifica se existe o livro desejado
         cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
-    })    
+    })
     it('Teste 3: Calcula Frete', () => {    
         // Calcula o frete
         cy.get('[data-id=3]').within(() => {
@@ -18,5 +18,16 @@ describe('Teste End-to-End', () => {
 
         // Fecha o pop-up com o preço do frete
         cy.get('.swal-button').click()
-    })
+    })   
+    it('Teste 4: Compra livro', () => {    
+        // Compra
+        cy.get('[data-id=3]').within(() => {
+           cy.contains('Comprar').click().then
+           cy.wait(2000)
+        })
+        cy.get('.swal-text').contains('Sua compra foi realizada com sucesso')
+
+        // Fecha o pop-up
+        cy.get('.swal-button').click()
+    }) 
   })
